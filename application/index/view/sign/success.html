@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title><{$title}></title>
+    <link rel="stylesheet" href="tpl/css/index.css">
+</head>
+<body>
+
+   <div class="Sign_Success">
+       <div class="Sign_Success_Contern">
+           <div class="Sign_Success_img">
+               <img src="tpl/css/Sign_Success.png" alt="">
+           </div>
+           <div class="Sign_Success_tit">
+               <{$title}>
+           </div>
+           <div class="Sign_Success_time">
+               <!--<p>签到截止时间：<span><{$info.time}></span></p>-->
+               <p><{$title1}>时间：<span><{$date}></span></p>
+           </div>
+           <div class="Sign_Success_btn">
+               <a href="sign_details.php?id=<{$id}>&t=<{$t}>" class="Sign_Success_bcurr">查看会议详情</a>
+               <a href="sign_result.php?id=<{$id}>&t=<{$t}>" class="Sign_Success_bcurrs">查看<{$title1}>列表</a>
+           </div>
+       </div>
+   </div>
+
+</body>
+</html>

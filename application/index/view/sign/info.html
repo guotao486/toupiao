@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>会议详情</title>
+    <link rel="stylesheet" href="__SURVEY__/toupiao/public/sign/css/index.css">
+    <script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/layer/2.3/layer.js"></script>
+    <script type="text/javascript" src="__SURVEY__/toupiao/public/survey/js/zepto.min.js"></script>
+    <script type="text/javascript" src="{$ddjs}"></script>
+
+</head>
+<body>
+
+   <div class="Sign_Details">
+       <div class="Sign_Issues Sign_Top">
+           <p class="Sign_Ttile">{$info.name}</p>
+           <div class="Sign_Infos">
+               <div class="Sign_Issues_Info">
+                   <p>主讲人</p>
+                   <span>{$info.lecture_name}</span>
+               </div>
+               <div class="Sign_Infoimg">
+                   <a href="javascript:" id="toComment">
+                       <img src="__SURVEY__/toupiao/public/sign/img/pj.png" alt="">
+                       <span>去评价</span>
+                   </a>
+               </div>
+           </div>
+           <div class="Sign_Infostie">
+               <p>主持人<span>{$info.host_name}</span></p>
+           </div>
+       </div>
+       <div class="Sign_Issues">
+           <p>时间地点</p>
+           <div class="Sign_Issues_tit">
+               <span>会议日期：{$info.time} </span>
+               <span>会议地点：{$info.address}</span>
+               <span>参会人员：{$info.users}</span>
+           </div>
+       </div>
+       <div class="Sign_Issues">
+           <p>学习内容</p>
+          <div class="Sign_Issues_tit">
+              <span>{$info.content}</span>
+          </div>
+       </div>
+       <div class="Sign_Pople">
+           <div class="Sign_Pople_pops">
+               <p>参会人员
+                   <!--<span>5/100 确认</span>-->
+               </p>
+               <a href="{:url('index/sign/signUserList',['id'=>$Request.param.id])}">
+                   <div class="Sign_Pople_pop">
+                       <!--<div class="Sign_Pople_left"><b id="name">汪军</b></div>-->
+                       <ul class="Sign_Pople_ul">
+                           {foreach name="list" item="user" key="k" }
+                           <li class="Sign_Pople_bag{$k+2}">{$user.name}</li>
+                           {/foreach}
+                           <b> > </b></span>
+                       </ul>
+                   </div>
+               </a>
+           </div>
+       </div>
+   </div>
+
+</body>
+<script>
+    var _config = {$_config};
+    var isPc = false;
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        isPc = false;
+        dd.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: [
+                'device.notification.prompt',
+                'biz.chat.pickConversation',
+                'device.notification.confirm',
+                'device.notification.alert',
+                'device.notification.prompt',
+                'biz.user.get',
+                'device.notification.showPreloader']
+        });
+        dd.userid=0;
+
+        dd.ready(function() {
+//            logger.i('dd.ready rocks!');
+            dd.device.notification.showPreloader({
+                text: "请稍等..", //loading显示的字符，空表示不显示文字
+                showIcon: true, //是否显示icon，默认true。Android无此参数。
+                onSuccess : function(result) {
+                    /*{}*/
+                },
+                onFail : function(err) {}
+            });
+            dd.biz.user.get({
+                corpId:_config.corpId, // 可选参数，如果不传则使用用户当前企业的corpId。
+                onSuccess: function (info) {
+                    dd.userid = info.emplId;
+                    if(!info.nick){
+                        $('#name').html(info.nickName);
+                    }else{
+                        $('#name').html(info.nickName);
+                    }
+                    dd.device.notification.hidePreloader({
+                        onSuccess : function(result) {
+                            /*{}*/
+                        },
+                        onFail : function(err) {}
+                    })
+
+//                        dd.device.notification.alert({
+//                            message: info,
+//                            title: "签到成功",//可传空
+//                            buttonName: "确定",
+//                            onSuccess : function() {
+//                                //onSuccess将在点击button之后回调
+//                                /*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+                },
+                onFail: function (err) {
+                    logger.e('userGet fail: ' + JSON.stringify(err));
+                }
+            });
+
+        });
+
+        dd.error(function(err) {
+            logger.e('dd error: ' + JSON.stringify(err));
+        });
+    }else{
+        isPc = true;
+        DingTalkPC.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: ['runtime.permission.requestAuthCode', 'biz.user.get'] // 必填，需要使用的jsapi列表
+        });
+        DingTalkPC.ready(function(res) {
+            DingTalkPC.biz.user.get({
+                onSuccess: function (info) {
+                    dd.userid = info.emplId;
+                    if(!info.nick){
+                        $('#name').html(info.nickName);
+                    }else{
+                        $('#name').html(info.nickName);
+                    }
+//                        DingTalkPC.device.notification.alert({
+//                            message: JSON.stringify(res),
+//                            title: "提示",//可传空
+//                            buttonName: "收到",
+//                            onSuccess : function() {
+//								/*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+
+                },
+                onFail: function (err) {
+
+                }
+            });
+        });
+        DingTalkPC.error(function(err) {
+
+        });
+    }
+
+    $(function(){
+
+        setTimeout(function () {
+            var user_ding = dd.userid;
+            if(!user_ding){
+                if(!isPc) {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: '请从钉钉打开或刷新后重试',
+                        icon:'5'
+                    });
+                } else {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: 'PC用户请从钉钉工作台打开微应用或刷新后重试',
+                        icon:'5'
+                    });
+                }
+            }else{
+                $('#toComment').click(function(){
+                    window.location.href = "{:url('index/sign/comment',['id'=>$Request.param.id])}?userId="+dd.userid;
+                });
+            }
+        }, 2500);
+
+    })
+</script>
+</html>

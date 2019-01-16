@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>主讲人评价</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+     <div class="Sign_Commennt">
+
+         <div class="Sign_Commennt_pop">
+             <div class="public-comment-show clearfix">
+                 <div class="pcs-left">
+                     <p>汪军</p>
+                 </div>
+                 <div class="pcs-right">
+                     <div class="pcs-right_pop">
+                         <p>主讲人：<span>汪军</span></p>
+                         <p>部门：<span>IT服务部</span></p>
+                         <p>附件：<a href=""><span class="pcs-right_ppt">PPT</span></a></p>
+                         <p class="photo">评分：
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                         </p>
+                         <div class="pcs-right_text">
+                             <p id="hiddle">查看相关评价</p>
+                             <div class="hiddle">
+                                 <div class="insufficients">
+                                     <div class="public-comment-show clearfix">
+                                         <div class="pcs-right">
+                                             <div class="pcs-right-htop">
+                                                 <p>汪军<span>2018-09-10</span></p>
+                                             </div>
+                                             <p class="pcs-p">好</p>
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <div class="insufficients">
+                                     <div class="public-comment-show clearfix">
+                                         <div class="pcs-right">
+                                             <div class="pcs-right-htop">
+                                                 <p>郭涛<span>2018-09-11</span></p>
+                                             </div>
+                                             <p class="pcs-p">好好学习天天向上</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <textarea rows="3" placeholder="请写下你的评价"></textarea>
+                                 <button class="pcs-right_btn">提交</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+         <div class="Sign_Commennt_pop">
+             <div class="public-comment-show clearfix">
+                 <div class="pcs-left">
+                     <p>汪军</p>
+                 </div>
+                 <div class="pcs-right">
+                     <div class="pcs-right_pop">
+                         <p>主讲人：<span>汪军</span></p>
+                         <p>部门：<span>IT服务部</span></p>
+                         <p>附件：<a href=""><span class="pcs-right_ppt">PPT</span></a></p>
+                         <p class="photo">评分：
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                             <span><i class="high"></i><i class="nohigh"></i></span>
+                         </p>
+                         <div class="pcs-right_text">
+                             <p id="hiddle">查看相关评价</p>
+                             <div class="hiddle">
+                                 <div class="insufficients">
+                                     <div class="public-comment-show clearfix">
+                                         <div class="pcs-right">
+                                             <div class="pcs-right-htop">
+                                                 <p>汪军<span>2018-09-10</span></p>
+                                             </div>
+                                             <p class="pcs-p">好</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="insufficients">
+                                     <div class="public-comment-show clearfix">
+                                         <div class="pcs-right">
+                                             <div class="pcs-right-htop">
+                                                 <p>郭涛<span>2018-09-11</span></p>
+                                             </div>
+                                             <p class="pcs-p">好好学习天天向上</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <textarea rows="3" placeholder="请写下你的评价"></textarea>
+                                 <button class="pcs-right_btn">提交</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+
+</body>
+
+<script>
+    $(function () {
+        //评分
+        var starRating = 0;
+        $('.photo span').on('mouseenter',function () {
+            var index = $(this).index()+1;
+            $(this).prevAll().find('.high').css('z-index',1)
+            $(this).find('.high').css('z-index',1)
+            $(this).nextAll().find('.high').css('z-index',0)
+        })
+        $('.photo').on('mouseleave',function () {
+            $(this).find('.high').css('z-index',0)
+            var count = starRating / 2
+            if(count == 5) {
+                $('.photo span').find('.high').css('z-index',1);
+            } else {
+                $('.photo span').eq(count).prevAll().find('.high').css('z-index',1);
+            }
+        })
+        $('.photo span').on('click',function () {
+            var index = $(this).index()+1;
+            $(this).prevAll().find('.high').css('z-index',1)
+            $(this).find('.high').css('z-index',1)
+            starRating = index*2;
+            alert('评分：'+(starRating.toFixed(1)+'分'))
+        })
+
+
+        //查看评价
+        $("#hiddle").click(function(){
+            $(".hiddle").slideToggle("slow");
+        });
+
+    })
+</script>
+
+</html>

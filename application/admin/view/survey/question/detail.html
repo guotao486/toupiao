@@ -1,0 +1,32 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>{:__('Title')}</th>
+        <th>{:__('Content')}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>人数</td>
+        <td>{$census.sum}</td>
+    </tr>
+    {volist name="census.option" id="vo"  }
+    <tr>
+        <td>{$vo.title}</td>
+        <td>{$vo.num}</td>
+    </tr>
+    {/volist}
+    {volist name="census.text" id="t"  }
+    <tr>
+        <td>文本内容</td>
+        <td>{$t}</td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+<div class="hide layer-footer">
+    <label class="control-label col-xs-12 col-sm-1"></label>
+    <div class="col-xs-12 col-sm-8">
+        <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="Layer.closeAll();">{:__('Close')}</button>
+    </div>
+</div>

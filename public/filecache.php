@@ -1,0 +1,1 @@
+<?php exit();?>{"corp_access_token":{"corp_access_token":"24fcd8e4eb9c3169ac9f1006ddfc93b7","expire_time":1545728292,"create_time":1545721292}}

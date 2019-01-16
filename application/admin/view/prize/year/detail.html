@@ -1,0 +1,60 @@
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th colspan="3">
+                {$info.title}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {foreach name='prize' item='p' key='k'}
+
+        <tr>
+            <th width="10%">{$k+1}.</th>
+            <th width="50%" colspan="2">{$p.title}</th>
+            <th width="30%">{$p.ballot_num=='1'?'单选':'多选'}</th>
+        </tr>
+        {foreach name='p.userList' item='u' key=''}
+        <tr>
+            <td width="10%"></td>
+            <td width="50%">{$u.user.name}</td>
+            <td width="30%">{$u.ballot}</td>
+        </tr>
+        {/foreach}
+        <tr>
+            <td width="10%"></td>
+            <td width="50%">参与人数</td>
+            <td width="30%">{$p.voteCount}</td>
+        </tr>
+    {/foreach}
+
+    <tr>
+        <td width="10%"></td>
+        <td width="50%"></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td width="10%"></td>
+        <td width="50%">总参与人数</td>
+        <td width="30%">{$num}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<div class="hide layer-footer">
+    <label class="control-label col-xs-12 col-sm-1"></label>
+    <div class="col-xs-12 col-sm-8">
+        <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="Layer.closeAll();">{:__('Close')}</button>
+        <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="export_xls({$id})">导出表格</button>
+    </div>
+</div>
+<script>
+    function export_xls(id)
+    {
+        window.location.href = '{:url("/admin/prize/year/excel",["id"=>$id])}';
+    }
+</script>

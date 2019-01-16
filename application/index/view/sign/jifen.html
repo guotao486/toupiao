@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>乡建联合机构—文化积分</title>
+    <link rel="stylesheet" href="__SURVEY__/toupiao/public/sign/css/jifen.css">
+    <script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/layer/2.3/layer.js"></script>
+    <script type="text/javascript" src="__SURVEY__/toupiao/public/survey/js/zepto.min.js"></script>
+    <script type="text/javascript" src="{$ddjs}"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="integral">
+            <div class="integral_img" id="img">
+                <!--<img src="https://wx.qlogo.cn/mmopen/vi_32/9Mh95micc1hvTujTD0gG86pgtGiaslBrtLQxxMTF5ZzgDsx99stjEuA193PsJ2r4SAh7WWjHxiaDBMPrSbrGfaQ8Q/132" alt="">-->
+                <!--汪军-->
+            </div>
+            <div class="integral_title">
+                <p>西厢房</p>
+                <span id="bumen">部门</span>
+            </div>
+            <div class="integral_jf">
+                <div class="integral_i">
+                    <img src="__SURVEY__/toupiao/public/sign/img/jf.png" alt="">
+                    <span>总积分</span>
+                    <p id="score">0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="integralme">
+            <ul class="integral_list">
+
+                <li class="integral_tab">
+                    <strong><b>全部</b></strong>
+                    <span id="type"></span>
+                </li>
+                <li class="integral_tab">
+                    <strong><b>学习</b></strong>
+                    <span id="type1"></span>
+                </li>
+                <li >
+                    <strong><b>主讲</b></strong>
+                    <span id="type3"></span>
+                </li>
+                <li >
+                    <strong><b>主持</b></strong>
+                    <span id="type2"></span>
+                </li>
+            </ul>
+            <div class="tabs">
+                <div class="tab-item active">
+                    <div class="integral_theme">
+                        <div class="integral_theme_title">
+                            <img src="__SURVEY__/toupiao/public/sign/img/zt.png" alt="">
+                            <span>全部主题</span>
+                        </div>
+                    </div>
+                    <div class="integral_theme_list">
+                        <div class="integral_theme_tit" id="type_text">
+                            <!--<a href="http://www.xxiangfang.com/ddoa/sign/sign_info.php?id=14&t=sign_start" class="integral_theme_a">-->
+                            <!--<div class="item-info-jifen">-->
+                            <!--<p class="item-info-p1">北美环境教育见闻&零垃圾生活方式分享会</p>-->
+                            <!--<p class="item-info-p2">-->
+                            <!--未开始-->
+                            <!--<span>2018.11.07~2018.11.15</span>-->
+                            <!--</p>-->
+                            <!--</div>-->
+                            <!--</a>-->
+                            <!--<a href="http://www.xxiangfang.com/ddoa/sign/sign_info.php?id=13&t=sign_start" class="integral_theme_a">-->
+                            <!--<div class="item-info-jifen">-->
+                            <!--<p class="item-info-p1">北美环境教育见闻&零垃圾生活方式分享会</p>-->
+                            <!--</div>-->
+                            <!--</a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-item">
+                    <div class="integral_theme">
+                        <div class="integral_theme_title">
+                            <img src="__SURVEY__/toupiao/public/sign/img/zt.png" alt="">
+                            <span>学习主题</span>
+                        </div>
+                    </div>
+                    <div class="integral_theme_list">
+                        <div class="integral_theme_tit" id="type1_text">
+                            <!--<a href="http://www.xxiangfang.com/ddoa/sign/sign_info.php?id=14&t=sign_start" class="integral_theme_a">-->
+                                <!--<div class="item-info-jifen">-->
+                                    <!--<p class="item-info-p1">北美环境教育见闻&零垃圾生活方式分享会</p>-->
+                                    <!--<p class="item-info-p2">-->
+                                        <!--未开始-->
+                                        <!--<span>2018.11.07~2018.11.15</span>-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                            <!--<a href="http://www.xxiangfang.com/ddoa/sign/sign_info.php?id=13&t=sign_start" class="integral_theme_a">-->
+                                <!--<div class="item-info-jifen">-->
+                                    <!--<p class="item-info-p1">北美环境教育见闻&零垃圾生活方式分享会</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-item">
+                    <div class="integral_theme">
+                        <div class="integral_theme_title">
+                            <img src="__SURVEY__/toupiao/public/sign/img/zt.png" alt="">
+                            <span>演讲主题</span>
+                        </div>
+                    </div>
+                    <div class="integral_theme_list">
+                        <div class="integral_theme_tit" id="type3_text">
+                            <!--<a href="http://www.xxiangfang.com/ddoa/sign/sign_info.php?id=14&t=sign_start" class="integral_theme_a">-->
+                                <!--<div class="item-info-jifen">-->
+                                    <!--<p class="item-info-p1">分享会</p>-->
+                                    <!--<p class="item-info-p2">-->
+                                        <!--未开始-->
+                                        <!--<span>2018.11.07~2018.11.15</span>-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-item">
+                    <div class="integral_theme">
+                        <div class="integral_theme_title">
+                            <img src="__SURVEY__/toupiao/public/sign/img/zt.png" alt="">
+                            <span>主持主题</span>
+                        </div>
+                    </div>
+                    <div class="integral_theme_list">
+                        <div class="integral_theme_tit" id="type2_text">
+                            <!--<a href="http://www.xxiangfang.com/ddoa/sign/sign_info.php?id=14&t=sign_start" class="integral_theme_a">-->
+                            <!--<div class="item-info-jifen">-->
+                            <!--<p class="item-info-p1">分享会</p>-->
+                            <!--<p class="item-info-p2">-->
+                            <!--未开始-->
+                            <!--<span>2018.11.07~2018.11.15</span>-->
+                            <!--</p>-->
+                            <!--</div>-->
+                            <!--</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<input type="hidden" id="ding" value="">
+</body>
+</html>
+<script>
+    var _config = {$_config};
+    var isPc = false;
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        isPc = false;
+        dd.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: [
+                'device.notification.prompt',
+                'biz.chat.pickConversation',
+                'device.notification.confirm',
+                'device.notification.alert',
+                'device.notification.prompt',
+                'biz.user.get',
+                'device.notification.showPreloader']
+        });
+        dd.userid=0;
+
+        dd.ready(function() {
+//            logger.i('dd.ready rocks!');
+            dd.device.notification.showPreloader({
+                text: "请稍等..", //loading显示的字符，空表示不显示文字
+                showIcon: true, //是否显示icon，默认true。Android无此参数。
+                onSuccess : function(result) {
+                    /*{}*/
+                },
+                onFail : function(err) {}
+            });
+            dd.biz.user.get({
+                corpId:_config.corpId, // 可选参数，如果不传则使用用户当前企业的corpId。
+                onSuccess: function (info) {
+                    $("#ding").val(info.emplId);
+                    if(!info.nick){
+                        $('#name').html(info.nickName);
+                    }else{
+                        $('#name').html(info.nick);
+                    }
+                    dd.device.notification.hidePreloader({
+                        onSuccess : function(result) {
+                            /*{}*/
+                        },
+                        onFail : function(err) {}
+                    })
+
+                    ajaxData();
+
+//                        dd.device.notification.alert({
+//                            message: info,
+//                            title: "签到成功",//可传空
+//                            buttonName: "确定",
+//                            onSuccess : function() {
+//                                //onSuccess将在点击button之后回调
+//                                /*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+                },
+                onFail: function (err) {
+                    logger.e('userGet fail: ' + JSON.stringify(err));
+                }
+            });
+
+        });
+
+        dd.error(function(err) {
+            logger.e('dd error: ' + JSON.stringify(err));
+        });
+    }else{
+        isPc = true;
+        DingTalkPC.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: ['runtime.permission.requestAuthCode', 'biz.user.get'] // 必填，需要使用的jsapi列表
+        });
+        DingTalkPC.ready(function(res) {
+            DingTalkPC.biz.user.get({
+                onSuccess: function (info) {
+
+                    $("#ding").val(info.emplId);
+                    ajaxData();
+//                    DingTalkPC.device.notification.alert({
+//                        message: JSON.stringify(info),
+//                        title: "提示",//可传空
+//                        buttonName: "收到",
+//                        onSuccess : function() {
+//                            /*回调*/
+//                        },
+//                        onFail : function(err) {}
+//                    });
+
+                },
+                onFail: function (err) {
+
+                }
+            });
+        });
+        DingTalkPC.error(function(err) {
+
+        });
+    }
+    function appendHtml(list,type)
+    {
+        var html = '';
+        $.each(list, function(key, val){
+            console.log(val);
+            html += '<a href="{:url('index/sign/info')}?id='+val.id+'" class="integral_theme_a">';
+            html +=  '<div class="item-info-jifen">';
+            html +=  ' <p class="item-info-p1">'+val.name+'</p>';
+            if(type == 1){
+                if(val.start_text){
+                    html +=  ' <p class="item-info-p2">'+val.start_text;
+                }
+                html +=  '<span>'+val.time+'</span>';
+                html +=  '</p>';
+            }
+            html +=  ' </div>';
+            html +=  ' </a>';
+        });
+        return html;
+    }
+    function ajaxData(index)
+    {
+        var userId = $('#ding').val();
+//            userId='074421601220324349';
+        var index = layer.load();
+//            layer.msg(userId);
+        $.ajax({
+            url: "{:url('index/sign/jifen')}",
+            type: "get",
+            data: {"userId":userId},
+            timeout: 5000,
+            success: function (res) {
+//                        var res = JSON.parse(res);
+                if(res.code == 1){
+                    var user = res.data.user;
+                    if(user.avatar&&user.avatar!=' '){
+                        $('#img').html("<img src='"+user.avatar+"'>");
+                    }else{
+                        $('#img').html(user.name);
+                    }
+
+                    $('#bumen').html(user.department);
+                    $('#score').html(user.score);
+                    $('#type').html(res.data.count);
+                    $('#type1').html(user.shareToNum);
+                    $('#type3').html(user.shareNum);
+                    $('#type2').html(user.shareHostNum);
+
+                    var list = res.data.list;
+                    var html = appendHtml(list,1);
+                    $("#type_text").append(html);
+
+                    var list1 = res.data.list1;
+                    var html1 = appendHtml(list1);
+                    $("#type1_text").append(html1);
+
+                    var list2 = res.data.list2;
+                    var html2 = appendHtml(list2);
+                    $("#type2_text").append(html2);
+
+                    var list3 = res.data.list1;
+                    var html3 = appendHtml(list3);
+                    $("#type3_text").append(html3);
+//                            layer.msg(res.msg,{icon:6});
+                }else{
+                    layer.msg(res.msg,{icon:5});
+                }
+                layer.close(index);
+//                console.log(res);
+            },
+            error:function(res){
+                layer.close(index);
+                layer.msg('网络延迟，请刷新后重试');
+                layer.msg(res);
+            }
+        });
+    }
+    $(function () {
+        setTimeout(function () {
+            var user_ding = $("#ding").val();
+
+            if(!user_ding){
+                if(!isPc) {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: '请从钉钉打开或刷新后重试',
+                        icon:'5'
+                    });
+                } else {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: 'PC用户请从钉钉工作台打开微应用或刷新后重试',
+                        icon:'5'
+                    });
+                }
+            }
+
+        }, 5000);
+    });
+</script>
+<script>
+    //tab切换
+    $('.integral_list li').click(function() {
+        var i = $(this).index();
+        $(this).addClass('integral_tab').siblings().removeClass('integral_tab');
+        $('.tabs .tab-item').eq(i).addClass('active').siblings().removeClass('active');
+    });
+</script>

@@ -1,0 +1,114 @@
+<!--<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">-->
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Nick')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input id="c-nick" data-rule="required" class="form-control" name="row[nick]" type="text" value="{$row.nick}">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name}">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Userid')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input id="c-userId" data-rule="required" class="form-control" name="row[userId]" type="text" value="{$row.userId}">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Mobile')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input id="c-mobile" data-rule="required" class="form-control" name="row[mobile]" type="number" value="{$row.mobile}">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Avatar')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<div class="input-group">-->
+                <!--<input id="c-avatar" data-rule="required" class="form-control" size="50" name="row[avatar]" type="text" value="{$row.avatar}">-->
+                <!--<div class="input-group-addon no-border no-padding">-->
+                    <!--<span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>-->
+                    <!--<span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>-->
+                <!--</div>-->
+                <!--<span class="msg-box n-right" for="c-avatar"></span>-->
+            <!--</div>-->
+            <!--<ul class="row list-inline plupload-preview" id="p-avatar"></ul>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Departmentid')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input id="c-departmentId" data-rule="required" class="form-control" name="row[departmentId]" type="text" value="{$row.departmentId}">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Department')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input id="c-department" data-rule="required" class="form-control" name="row[department]" type="text" value="{$row.department}">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group layer-footer">-->
+        <!--<label class="control-label col-xs-12 col-sm-2"></label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>-->
+            <!--<button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</form>-->
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">积分:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-score" data-rule="required" class="form-control" name="row[score]" type="text" value="{$row.score}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">分享主讲次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-shareNum" data-rule="required" class="form-control" name="row[shareNum]" type="text" value="{$row.shareNum}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">分享主持次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-shareHostNum" data-rule="required" class="form-control" name="row[shareHostNum]" type="text" value="{$row.shareHostNum}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">分享参加次数:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-shareToNum" data-rule="required" class="form-control" name="row[shareToNum]" type="text" value="{$row.shareToNum}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">简介:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-describe" data-rule="required" class="form-control" name="row[describe]" type="text" value="{$row.describe}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-avatar" class="control-label col-xs-12 col-sm-2">{:__('Avatar')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" class="form-control" size="50" name="row[avatar]" type="text" value="{$row.avatar}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-image" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-image"></ul>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

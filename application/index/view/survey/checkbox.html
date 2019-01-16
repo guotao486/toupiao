@@ -1,0 +1,5 @@
+{foreach name="$q.options" item="o" key="k"}
+    <li>
+        <input type="checkbox" name="row[{$q.id}][option][]"  value="{$o.id}" class="radiobtn" >{$o.title}
+    </li>
+{/foreach}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>会议签到</title>
+    <link rel="stylesheet" href="__SURVEY__/toupiao/public/sign/css/index.css">
+</head>
+<body>
+
+    <div class="bag_Sign">
+        <div class="Sign_Contern">
+            <div class="Sign_Title">
+                <p>{$info.name}</p>
+            </div>
+            <div class="Sign_Ewm">
+                <div class="Sign_Ewm_title">
+                    请参会者扫描此二维码
+                </div>
+                <div class="Sign_Ewm_time">
+                    <span>会议时间：{$info.time}</span>
+                    <!--<span>时长：1小时30分钟</span>-->
+                </div>
+                <div class="Sign_Ewm_img">
+                    <img src="{:url('index/sign/signQrcode',['id'=>$id])}" alt="">
+                </div>
+                <div class="Sign_Ewm_w">
+                    注意：请使用钉钉扫码
+                </div>
+            </div>
+            <div class="Sign_Matter">
+                <p>方式1：直接通过手机展示二维码，让参会人员扫码</p>
+                <p>方式2：将签到二维码投屏到大屏幕，让参会人员扫描大屏幕二维码</p>
+                <p>方式3：将签到二维码打印出来，贴到会议室门口让参会人员签到</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

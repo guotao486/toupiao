@@ -1,0 +1,65 @@
+{foreach name='census' item='vo'}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th colspan="3">
+                {$key+1}.{$vo.title}({$vo['required']==1?'必填':'非必填'})
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    {notempty name="vo.option"}
+    {foreach name='vo.option' item='op'}
+        <tr>
+            <td width="10%"></td>
+            <td width="30%">{$op.title}</td>
+            <td width="50%">{$op.num}</td>
+        </tr>
+    {/foreach}
+    {/notempty}
+
+    {notempty name="vo.text"}
+    {foreach name='vo.text' item='t'}
+    <tr>
+        <td width="10%"></td>
+        <td width="30%">文本内容</td>
+        <td width="50%">{$t}</td>
+    </tr>
+    {/foreach}
+    {/notempty}
+
+    </tbody>
+</table>
+{/foreach}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th colspan="3">
+            汇总
+        </th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr>
+        <td width="10%"></td>
+        <td width="30%">总参与人数</td>
+        <td width="50%">{$vo.sum}</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<div class="hide layer-footer">
+    <label class="control-label col-xs-12 col-sm-1"></label>
+    <div class="col-xs-12 col-sm-8">
+        <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="Layer.closeAll();">{:__('Close')}</button>
+        <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="export_xls({$id})">导出表格</button>
+    </div>
+</div>
+<script>
+    function export_xls(id)
+    {
+        window.location.href = '{:url("/admin/survey/survey/excel",["id"=>$id])}';
+    }
+</script>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{$info.title}-西厢房问卷调查</title>
+    <link href="__SURVEY__/toupiao/public/survey/css/style.css" rel="stylesheet" type="text/css" />
+    <style>
+        .guize_html {
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            margin-left: -159px;
+            width: 318px;
+            height: auto;
+            border-radius: 10px;
+            background: #fff;
+            text-align: center;
+            font-size: 12px
+        }
+        .guize_img{
+            position: relative;
+            overflow: hidden;
+            margin-top: -69px;
+        }
+        .guize_img img{
+            width: 55%;
+            height:auto;
+        }
+        .guize_teile{
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            padding: 12px 0;
+        }
+        .guize_teile p{
+            padding: 5px 0;
+        }
+        .btnsucc {
+            display: block;
+            margin: 15px auto;
+            width: 70%;
+            border-radius: 10px;
+            background-color: #4da9ec;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="Excellent_selection">
+    <div class="Excellent_banner">
+        <img src="__SURVEY__/toupiao/public{$info.image}" alt="">
+    </div>
+    <div class="Excellent_porce">
+        <p>本次有效期：<span>{$info.start_time}~{$info.end_time}</span></p>
+        <p class="Excellent_porce_tit">{$info.title}</p>
+        <p class="Excellent_porce_onlile"></p>
+        <div class="Excellent_porce_float">
+            <span class="left">西厢房乡建联合机构</span>
+            <span class="right">已参与{$result_num}人</span>
+        </div>
+    </div>
+
+    <div class="Excellent_pople">
+        <form method="post" action="{:url('index/survey/add')}" id="addFrom">
+            <input name="id" type="hidden" value="{:request()->param('id')}"/>
+            <input name="ding" id="ding" type="hidden" value=""/>
+            <input name="name" id="name" type="hidden" value=""/>
+            <ul class="Excellent_pople_Ul">
+                {foreach name='info.question' item='q' key='k'}
+                <li class="Excellent_pople_Li">
+                <div class="Excellent_pople_img">
+                    <p>{$q.title}</p>
+                    <!--<span>IT服务部</span>-->
+                </div>
+                <!--<div class="Excellent_pople_imgs">-->
+                    <!--<img src="__SURVEY__/toupiao/public/{$q.image}" alt="">-->
+                    <!--<div class="Excellent_pople_s_info">-->
+                        <!--<h3 class="s_title">{$q.describe}</h3>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="Excellent_item-info">
+                    <ul class="Excellent_choosebank">
+                        {switch name="q.type"}
+                        {case value="1"}
+                        {include file="survey:redio" /}
+                        {/case}
+                        {case value="2"}
+                        {include file="survey:checkbox" /}
+                        {/case}
+                        {case value="3"}
+                        {include file="survey:textarea" /}
+                        {/case}
+                        {case value="4"}
+                        {include file="survey:redio" /}
+                        {include file="survey:textarea" /}
+                        {/case}
+                        {case value="5"}
+                        {include file="survey:checkbox" /}
+                        {include file="survey:textarea" /}
+                        {/case}
+                        {/switch}
+                    </ul>
+                </div>
+            </li>
+                {/foreach}
+            </ul>
+        </form>
+    </div>
+    <!--循环体-->
+        <div >
+            <div class="item-detail Excellent_fixed">
+                <button type="button" onclick="ajaxDemo()" class="bt" value="提交">提交</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+
+<!-- jQuery -->
+<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/layer/2.3/layer.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__SURVEY__/toupiao/public/survey/js/zepto.min.js"></script>
+<!--<script type="text/javascript" src="http://g.alicdn.com/dingding/open-develop/1.6.9/dingtalk.js"></script>-->
+<script type="text/javascript" src="{$ddjs}"></script>
+
+<script>
+    var _config = {$_config};
+    var isPc = false;
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        isPc = false;
+        dd.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: [
+                'runtime.info',
+                'device.notification.prompt',
+                'biz.chat.pickConversation',
+                'device.notification.confirm',
+                'device.notification.alert',
+                'device.notification.prompt',
+                'biz.chat.open',
+                'biz.util.open',
+                'biz.user.get',
+                'biz.contact.choose',
+                'biz.telephone.call',
+                'biz.ding.post',
+                'device.notification.showPreloader']
+        });
+        dd.userid=0;
+
+        dd.ready(function() {
+//            logger.i('dd.ready rocks!');
+            dd.device.notification.showPreloader({
+                text: "请稍等..", //loading显示的字符，空表示不显示文字
+                showIcon: true, //是否显示icon，默认true。Android无此参数。
+                onSuccess : function(result) {
+                    /*{}*/
+                },
+                onFail : function(err) {}
+            })
+            dd.runtime.info({
+                onSuccess: function(info) {
+                    // logger.i('runtime info: ' + JSON.stringify(info));
+                },
+                onFail: function(err) {
+                    // logger.e('fail: ' + JSON.stringify(err));
+                }
+            });
+            dd.biz.user.get({
+                corpId:_config.corpId, // 可选参数，如果不传则使用用户当前企业的corpId。
+                onSuccess: function (info) {
+                    $("#ding").val(info.emplId);
+                    var nick = info.nick;
+                    if(!nick){
+                        nick = info.nickName;
+                    }
+                    $("#name").val(info.nick);
+                    dd.device.notification.hidePreloader({
+                        onSuccess : function(result) {
+                            /*{}*/
+                        },
+                        onFail : function(err) {}
+                    })
+//                        dd.device.notification.alert({
+//                            message: info,
+//                            title: "签到成功",//可传空
+//                            buttonName: "确定",
+//                            onSuccess : function() {
+//                                //onSuccess将在点击button之后回调
+//								/*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+                },
+                onFail: function (err) {
+                    logger.e('userGet fail: ' + JSON.stringify(err));
+                }
+            });
+        });
+        dd.error(function(err) {
+            logger.e('dd error: ' + JSON.stringify(err));
+        });
+    }else{
+        isPc = true;
+        DingTalkPC.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: ['runtime.permission.requestAuthCode', 'biz.user.get'] // 必填，需要使用的jsapi列表
+        });
+        DingTalkPC.ready(function(res) {
+            DingTalkPC.biz.user.get({
+                onSuccess: function (res) {
+                    $("#ding").val(res.emplId);
+
+                    $("#name").val(res.nickName);
+//                        DingTalkPC.device.notification.alert({
+//                            message: JSON.stringify(res),
+//                            title: "提示",//可传空
+//                            buttonName: "收到",
+//                            onSuccess : function() {
+//								/*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+
+                },
+                onFail: function (err) {
+
+                }
+            });
+        });
+        DingTalkPC.error(function(err) {
+
+        });
+    }
+
+</script>
+<script>
+    $(function () {
+
+        $('.guize_html').hide();
+        $('.btnsucc').click(function(){
+            window.location.href='{:url("index/survey/index")}';
+        });
+        setTimeout(function () {
+            var user_ding = $('#ding').val();
+            var user_name = $('#name').val();
+            if(!user_ding||!user_name){
+                if(!isPc) {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: '请从钉钉打开或刷新后重试',
+                        icon:'5'
+                    });
+                } else {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: 'PC用户请从钉钉工作台打开微应用或刷新后重试',
+                        icon:'5'
+                    });
+                }
+            }
+
+        }, 5000);
+    });
+    function ajaxDemo(){
+
+        var ii = layer.load();
+        $.ajax({
+            type: "POST",
+            url: "{:url('index/survey/add')}",
+            data: $('#addFrom').serialize(),
+            success: function(res){
+                if(res.code == 200){
+
+                    layer.open({
+                        type: 1,
+                        shadeClose:true,
+                        offset: '180px',
+                        closeBtn:0,
+                        shade: [0.8, '#393D49'],
+                        title: false, //不显示标题
+                        content: $('.guize_html'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                    });
+
+                }else{
+                    layer.alert(res.msg , {icon: 5});
+                }
+                layer.close(ii);
+            }
+        });
+    }
+</script>
+</body>
+<div class="guize_html">
+    <div class="guize_img">
+        <img src="__SURVEY__/toupiao/public/survey/img/guize_img1.png" alt="">
+    </div>
+    <div class="guize_teile">
+        <p>恭喜你投票成功</p>
+        <p>谢谢参与！</p>
+    </div>
+    <div class="btnsucc">
+        确定
+    </div>
+</div>
+</html>

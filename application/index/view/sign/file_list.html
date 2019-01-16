@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>参加人员</title>
+    <link rel="stylesheet" href="__SURVEY__/toupiao/public/sign/css/index.css">
+</head>
+<body>
+
+    <div class="Sign_Result">
+        <p class="Sign_Result_success">附件列表</p>
+        {foreach name="list" item="file" key="k" }
+        <div class="Sign_Result_pop">
+            <div class="Sign_Result_pops">
+                <b class="Sign_Result_bag">{$file.name}</b>
+                <a style="float:right;padding-right: 30px" href="__CDN__{$file.path}">查看</a>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+
+</body>
+</html>

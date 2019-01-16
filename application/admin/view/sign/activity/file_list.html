@@ -1,0 +1,46 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <table class="table table-striped " data-buttons->
+    <thead class="text-center">
+    <tr>
+        <th>原名称</th>
+        <th>地址</th>
+        <th>缩略图</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {empty name="fileList"}
+    <tr class="no-records-found">
+        <td colspan="2" class="text-center">没有找到记录</td>
+    </tr>
+    {else /}
+    {volist name="fileList" id="vo"  }
+    <tr>
+        <td>{$vo.name}</td>
+        <td>{$vo.path}</td>
+        <td><a href="__CDN__{$vo.path}" target="_blank">
+            <img class="img-sm img-center" src="__CDN__{$vo.path}">
+        </a></td>
+        <td>
+            <button type="button"  class="btn btn-danger btn-file-del"  data-url="sign/activity/fileDel?id={$vo.id}&a_id={$id}"  ><i class="fa fa-trash"></i> 删除</button>
+        </td>
+    </tr>
+    {/volist}
+    {/empty}
+    <tr calss="text-center">
+        <td colspan="4"> </td>
+    </tr>
+    </tbody>
+</table>
+    </div>
+</form>
+<div class="hide layer-footer">
+    <label class="control-label col-xs-12 col-sm-1"></label>
+    <div class="col-xs-12 col-sm-8">
+        <button type="button" id="plupload-avatar" class="btn btn-danger plupload"  data-url="sign/activity/upload?id={$id}" data-multipart="" data-mimetype="*" data-multiple="true" ><i class="fa fa-upload"></i> 上传</button>
+        <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="Layer.closeAll();">{:__('Close')}</button>
+    </div>
+</div>
+

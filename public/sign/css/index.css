@@ -1,0 +1,592 @@
+@charset "UTF-8";
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Microsoft Yahei", "黑体", "宋体";
+}
+a:link{
+    text-decoration: none;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix{
+    clear: both;
+}
+img {
+    max-width: 100% !important;
+    vertical-align: middle;
+}
+ul, li, dl, dt, dd {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: #323232;
+}
+
+/*会议签到 Sign in*/
+.bag_Sign{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #77b995;
+    display: table;
+}
+.Sign_Contern{
+    position: relative;
+    margin:0 auto;
+    text-align: center;
+}
+.Sign_Title{
+    padding: 20px 0;
+    color: #fff;
+    font-size: 14px;
+}
+.Sign_Ewm{
+    background: #fff;
+    margin: 0 15px;
+}
+.Sign_Ewm_title{
+    padding: 15px 0 10px;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.Sign_Ewm_time{
+    font-size: 12px;
+    color: #6c6c6c;
+    padding-bottom: 15px;
+}
+.Sign_Ewm_time span:first-of-type{
+    margin-right: 10px;
+}
+.Sign_Ewm_img{
+    padding: 20px 0;
+}
+.Sign_Ewm_img img{
+    width: 240px;
+    height: 240px;
+}
+.Sign_Ewm_w{
+    font-size: 15px;
+    color: #6c6c6c;
+    padding-bottom: 20px;
+    letter-spacing: 1px;
+}
+.Sign_Matter{
+    background: #fff;
+    margin: 25px 15px 0;
+    padding: 15px 10px;
+}
+.Sign_Matter p{
+    color: #6c6c6c;
+    font-size: 14px;
+    text-align: left;
+    line-height: 22px;
+}
+
+
+/*会议成功 Sign_Success */
+.Sign_Success{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: table;
+}
+.Sign_Success_Contern{
+    position: relative;
+    margin:0 auto;
+    text-align: center;
+    align-content: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+.Sign_Success_img img{
+    width:100px;
+    height:100px;
+}
+.Sign_Success_tit{
+    padding: 20px 0;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+.Sign_Success_time{
+    color: #6c6c6c;
+    text-align: left;
+    margin: 0 45px;
+    font-size: 14px;
+}
+.Sign_Success_time p{
+    padding: 3px 0;
+}
+.Sign_Success_time span{
+    float: right;
+}
+.Sign_Success_btn{
+    padding: 30px 0;
+}
+.Sign_Success_btn a{
+    display: block;
+    padding: 13px 0;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    border: 1px #e3e3e3 solid;
+    font-weight: bold;
+}
+.Sign_Success_bcurr{
+    background: #5eaaf8;
+    color: #fff;
+}
+.Sign_Success_bcurrs{
+    background: #f8f8f8;
+}
+
+
+/*会议签到 详情 details*/
+.Sign_Details{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #f8f8f8;
+}
+.Sign_Details_tit{
+    padding: 14px;
+    font-size: 14px;
+    background: #fff;
+    margin: 10px 0;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+}
+.Sign_Details_tits{
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+.Sign_Details_tits span{
+    float: right;
+    background: #dde2dc;
+    padding: 5px;
+    font-size: 12px;
+    color: #000;
+    letter-spacing: 1px;
+}
+.Sign_Details_tit p{
+    color: #6c6c6c;
+    padding: 2px 0;
+}
+.Sign_Issues{
+    font-size: 14px;
+    background: #fff;
+    border-bottom: 1px solid #e9e9e9;
+    color: #6c6c6c;
+    margin-bottom: 10px;
+}
+.Sign_Issues p{
+    text-align: center;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 10px 0;
+}
+.Sign_Issues_tit{
+    padding: 15px 0 10px 14px;
+}
+.Sign_Issues_tit span{
+    display: block;
+    padding-bottom: 5px;
+}
+.Sign_Issues span b{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: #ecf1eb;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+    font-weight: normal;
+    border-radius: 50%;
+    font-size: 12px;
+}
+.Sign_Issues span:nth-child(2) b{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: #9e9ce7;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+    font-weight: normal;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+}
+.Sign_Issues span:nth-child(3) b{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background: #fc816f;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+    font-weight: normal;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+}
+.Sign_Pople{
+    font-size: 14px;
+    background: #fff;
+    border-top: 1px solid #e9e9e9;
+    color: #6c6c6c;
+}
+.Sign_Pople_tit{
+    padding: 10px 0 10px 15px;
+    border-bottom: 1px solid #e9e9e9;
+}
+.Sign_Pople_tit p{
+    padding: 10px 0;
+}
+.Sign_Pople_tit p span{
+    float: right;
+    margin-right: 15px;
+    /* width: 30px;
+     height: 30px;
+     background: #fc816f;
+     text-align: center;
+     line-height: 30px;
+     font-weight: normal;
+     border-radius: 50%;
+     font-size: 12px;
+     color: #fff;
+     letter-spacing: 1px;
+     position: relative;
+     top: -5px;*/
+}
+.Sign_Pople_pops{
+    padding: 10px 0 10px 15px;
+    border-bottom: 1px solid #e9e9e9;
+}
+.Sign_Pople_pops p span{
+    float: right;
+    margin-right: 15px;
+}
+.Sign_Pople_pop{
+    position: relative;
+    overflow: hidden;
+    padding-top: 10px;
+}
+.Sign_Pople_left{
+    float: left;
+}
+.Sign_Pople_left b{
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: normal;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 1px;
+    background: #fc816f;
+    display: inline-block;
+}
+.Sign_Pople_ul{
+    float: right;
+}
+.Sign_Pople_ul li{
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: normal;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.Sign_Pople_ul .Sign_Pople_bag2{
+    background: #f3b352;
+}
+.Sign_Pople_ul .Sign_Pople_bag3{
+    background: #9e9ce7;
+}
+.Sign_Pople_ul .Sign_Pople_bag4{
+    background: #7bcc6f;
+}
+.Sign_Pople_ul b{
+    font-size: 22px;
+    margin-right: 15px;
+    color: #cccccc;
+    font-weight: normal;
+}
+.Sign_Pople_success{
+    padding: 18px 0 18px 15px;
+    border-bottom: 1px solid #e9e9e9;
+}
+.Sign_Pople_success p{
+    color: #000;
+}
+.Sign_Pople_success b{
+    color: #6c6c6c;
+    font-weight: normal;
+    margin-left: 10px;
+}
+.Sign_Pople_success span{
+    float: right;
+    color: #6c6c6c;
+    margin-right: 15px;
+}
+.Sign_Pople_success span b{
+    font-size: 22px;
+    color: #cccccc;
+    font-weight: normal;
+}
+.Sign_Pople_success .pos{
+    position: relative;
+    top:-7px;
+}
+
+/*查看签到人员 Sign_Result*/
+.Sign_Result{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #f8f8f8;
+}
+.Sign_Result_success{
+    font-size: 15px;
+    background: #fff;
+    padding: 12px 0 12px 15px;
+    border-bottom: 1px solid #e9e9e9;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: #6c6c6c;
+}
+.Sign_Result_pop{
+    font-size: 14px;
+    background: #fff;
+    padding: 8px 0 8px 15px;
+    border-bottom: 1px solid #e9e9e9;
+}
+.Sign_Result_pops b {
+    /*width: 30px;*/
+    /*height: 30px;*/
+    text-align: center;
+    line-height: 30px;
+    padding-right: 10px;
+    /*border-radius: 50%;*/
+    /*font-size: 12px;*/
+    color: #6c6c6c;
+    letter-spacing: 1px;
+    /*display: inline-block;*/
+}
+.Sign_Result_pops span {
+    /*float: right;*/
+    margin-right: 15px;
+    color: #6c6c6c;
+    margin-top: 5px;
+}
+.Sign_Result_pops span:first-of-type {
+    margin-right: 0;
+}
+.Sign_Result_pops span:last-child{
+    float: right;
+}
+/*.Sign_Result_bag{*/
+/*background: #fc816f;*/
+/*}*/
+/*.Sign_Result_bag2{*/
+/*background: #f3b352;*/
+/*}*/
+/*.Sign_Result_bag3{*/
+/*background: #9e9ce7;*/
+/*}*/
+/*.Sign_Result_bag4{*/
+/*background: #7bcc6f;*/
+/*}*/
+
+.Sign_Top{
+    margin-top: 10px;
+}
+.Sign_Issues .Sign_Ttile{
+    font-size: 15px;
+    font-weight: bold;
+}
+.Sign_Infos{
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #e9e9e9;
+}
+.Sign_Issues_Info{
+    position: relative;
+    display: flex;
+    padding: 15px 0 10px 14px;
+}
+.Sign_Issues_Info p{
+    text-align: left;
+    border:none;
+    padding:0;
+}
+.Sign_Issues_Info span{
+    padding-left: 20px;
+}
+.Sign_Infoimg{
+    background: #f7b45d;
+    border-radius: 5px;
+    padding: 4px 8px;
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.Sign_Infoimg img{
+    width: 18px;
+    height: 16px;
+    padding-left: 2px;
+}
+.Sign_Infoimg span{
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+}
+.Sign_Infostie{
+    padding: 10px 0;
+}
+.Sign_Infostie p{
+    text-align: left;
+    padding-left: 15px;
+    border: none;
+}
+.Sign_Infostie span{
+    float: right;
+    padding-right: 15px;
+}
+.Sign_Details_tit .Sign_Details_tits{
+    text-align: center;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 10px 0;
+}
+
+
+/*主讲人评价*/
+.Sign_Commennt{
+    width: 100%;
+    height: 100%;
+    border-top: 8px solid #f8f8f8;
+}
+.Sign_Commennt_pop{
+    font-size: 14px;
+    border-bottom: 1px solid #e9e9e9;
+    color: #6c6c6c;
+    padding:0 20px;
+}
+.public-comment-show{
+    width: 100%;
+    padding: 12px 0;
+    position: relative;
+    display: flex;
+}
+.pcs-left{
+    width: 60px;
+    margin-right: 20px;
+}
+.pcs-left p{
+    width: 60px;
+    height: 60px;
+    background: #ecb35c;
+    color: #fff;
+    line-height: 60px;
+    text-align: center;
+    letter-spacing: 1px;
+    border-radius: 50%;
+}
+.pcs-right{
+    width: 85%;
+}
+.pcs-right_pop p{
+    padding: 3px 0;
+}
+.pcs-right_pop a{
+    text-decoration: underline ;
+    color: red;
+    cursor: pointer;
+}
+.pcs-right_ppt{
+    color: red;
+}
+.pcs-right_pop .photo img{
+    width: 24px;
+    height: 24px;
+}
+.pcs-right_text{
+    padding-top: 5px;
+    letter-spacing: 2px;
+}
+.pcs-right_text textarea{
+    width: 100%;
+    text-indent: 10px;
+    padding: 5px 0;
+    line-height: 20px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.pcs-right_btn{
+    background: #656565;
+    padding: 5px 15px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    float: right;
+    margin-top: 5px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.resulttime{
+    padding-top: 10px;
+}
+.public-comment-show {
+    width:100%;
+    padding:5px 0;
+    border-bottom:1px solid #f5f5f5;
+    position:relative;
+    display:flex;
+}
+.pcs-right{
+    width: 100%;
+}
+.pcs-right-htop p{
+    font-weight: normal;
+}
+.pcs-right-htop span{
+    margin: 0 5px;
+    font-size: 12px;
+}
+.pcs-p {
+    padding-top: 10px;
+    font-family: "Microsoft Yahei";
+    font-weight: normal;
+    font-size: 12px;
+}
+.Sign_Commennt_hiddle{
+    cursor: pointer;
+}
+.hiddle{
+    display: none;
+}

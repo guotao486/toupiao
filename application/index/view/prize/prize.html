@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{$info.title}</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            color: #333;
+            font: 12px "微软雅黑";
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        .Excellent_selection{
+            position: relative;
+            overflow: hidden;
+        }
+        .Excellent_banner img{
+            width: 100%;
+            display: block;
+        }
+        .Excellent_porce{
+            width: 97%;
+            margin: 10px auto 20px;
+            background: #fff;
+            padding: 5px 0;
+            border-radius: 5px;
+        }
+        .Excellent_porce p{
+            padding: 10px 10px 0;
+        }
+        .Excellent_porce_tit{
+            color: #4da9ec;
+            font-size: 15px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .Excellent_porce_onlile{
+            border-bottom: 1px solid #e1e1e1;
+        }
+        .Excellent_porce_float{
+            position: relative;
+            overflow: hidden;
+        }
+        .Excellent_porce_float .left{
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin: 10px 10px 0;
+            display: inline-flex;
+        }
+        .Excellent_porce_float .right{
+            font-size: 12px;
+            letter-spacing: 2px;
+            float: right;
+            width: 90px;
+            margin: 10px 10px 0 0;
+            background: #4da9ec;
+            text-align: center;
+            color: #fff;
+            border-radius: 15px;
+            padding: 2px 0;
+        }
+        .Excellent_pople {
+            width: 97%;
+            margin: 0 auto 70px;
+        }
+        .Excellent_prize{
+            padding-bottom: 10px;
+        }
+        .Excellent_prize p{
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        .Excellent_to{
+            color: #323232;
+        }
+        .Excellent_to span{
+            margin-left: 10px;
+        }
+        .Excellent_to b{
+            font-weight: normal;
+            font-size: 12px;
+            margin-left: 10px;
+            color: #939393;
+        }
+        .Excellent_pople_Ul{
+            position: relative;
+            overflow: hidden;
+            padding: 10px 6px 0;
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .Excellent_pople_Li{
+            width: 48%;
+            float: left;
+            background: #faf8f9;
+            text-align: center;
+            margin-bottom: 20px;
+            list-style: none;
+            box-shadow: 1px 1px 2px #cccccc;
+            border-radius: 5px;
+        }
+        .Excellent_pople_Li:nth-child(2n){
+            margin-right: 10px;
+        }
+        .Excellent_pople_img{
+            background: url("http://www.xxiangfang.com/data/uploads/2017/01/13/jux1.png");
+            height: 30px;
+            width: 100%;
+            background-repeat: no-repeat;
+            line-height: 30px;
+            font-size: 14px;
+            color: #fff;
+        }
+        .Excellent_pople_img p{
+            padding-left: 10px;
+            letter-spacing: 2px;
+            float: left;
+        }
+        .Excellent_pople_img span{
+            float: right;
+            color: #a2a2a2;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        .Excellent_pople_imgs{
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+        .Excellent_pople_imgs img{
+            width: 100%;
+            height: 170px;
+        }
+        .Excellent_pople_s_info{
+            position: absolute;
+            z-index: 100;
+            background-color: rgba(0,0,0,.25);
+            bottom: 0;
+            left: 0;
+            padding: 5px 4px;
+            text-align: left;
+        }
+        .Excellent_pople_s_info .s_title{
+            color: #fff;
+            font-weight: 400;
+        }
+        .Excellent_item-info{
+            background: #f7b45d;
+            color: #fff;
+            border-radius: 20px;
+            padding: 5px 0;
+            width: 50%;
+            margin: 0 auto 10px;
+            letter-spacing: 1px;
+        }
+        .Excellent_item-info_disabled{
+            background: #7d7973;
+            color: #fff;
+            border-radius: 20px;
+            padding: 5px 0;
+            width: 50%;
+            margin: 0 auto 10px;
+            letter-spacing: 1px;
+        }
+        .item-detail{
+            padding: 10px;
+        }
+        .Excellent_fixed{
+            position: fixed;
+            bottom: 0;
+            width: 95%;
+            z-index: 100;
+            background: #fff;
+        }
+        .bt{
+            width: 100%;
+            background: #4da9ec;
+            font-size: 14px;
+            color: #fff;
+            letter-spacing: 2px;
+            clear: both;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 10px;
+            border: none;
+            -webkit-appearance: none;
+        }
+        @media screen  and ( min-width:768px ) and (max-width: 1800px){
+            .Excellent_selection{
+                width: 375px;
+                margin: 0 auto;
+            }
+            .Excellent_fixed {
+                width: 21%;
+            }
+        }
+        .guize_html {
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            margin-left: -159px;
+            width: 318px;
+            height: auto;
+            border-radius: 10px;
+            background: #fff;
+            text-align: center;
+            font-size: 12px
+        }
+        .guize_img{
+            position: relative;
+            overflow: hidden;
+            margin-top: -69px;
+        }
+        .guize_img img{
+            width: 55%;
+            height:auto;
+        }
+        .guize_teile{
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            padding: 12px 0;
+        }
+        .guize_teile p{
+            padding: 5px 0;
+        }
+        .btnsucc {
+            display: block;
+            margin: 15px auto;
+            width: 70%;
+            border-radius: 10px;
+            background-color: #4da9ec;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="Excellent_selection">
+
+    <div class="Excellent_banner">
+        <img src="__SURVEY__/toupiao/public{$info.head_img}" alt="">
+    </div>
+    <div class="Excellent_porce">
+        <p>本次有效期：<span>{$info.start_time_text}</span> ~ <span>{$info.end_time_text}</span></p>
+        <p class="Excellent_porce_tit">{$info.title}</p>
+        <p class="Excellent_porce_onlile"></p>
+        <div class="Excellent_porce_float">
+            <span class="left">西厢房乡建联合机构</span>
+            <span class="right" id="count">已参与{$count}人</span>
+        </div>
+    </div>
+
+    <input type="hidden" name="ding" id="ding" value="">
+    <!--循环体-->
+    <div class="Excellent_pople">
+        {foreach name="list" item="prize" key="k"}
+        <div class="Excellent_pople_Ul" id="prize_{$prize.id}">
+            <!--奖项名称-->
+            <div class="Excellent_prize">
+                <p>{$k+1}、</p>
+                <p class="Excellent_to">{$prize.title}<span></span> <b>{$prize.ballot_num=='1'?'单选':'最多选'.$prize.ballot_num}</b> </p>
+            </div>
+            {foreach name="prize.userList" item="user"}
+            <div class="Excellent_pople_Li">
+                <div class="Excellent_pople_img">
+                    <p>{$user.user.name}</p>
+                    <span>{$user.user.department}</span>
+                </div>
+                <div class="Excellent_pople_imgs">
+                    {empty name="user.user.avatar"}
+                        <img src="http://www.bkjg.com/toupiao/public/uploads/20181224/43036903e95b599724b522053070fcc9.jpg">
+                        {else /}
+                        <img src="{$user.user.avatar}" alt="">
+                    {/empty}
+                    <!--<div class="Excellent_pople_s_info">-->
+                        <!--<h3 class="s_title">{$user.user.name}</h3>-->
+                    <!--</div>-->
+                </div>
+                <div class="{$prize.isAction?$user.isAction?'Excellent_item-info':'Excellent_item-info_disabled':'Excellent_item-info_disabled'}" data-id="{$prize.id}" data-userid="{$user.user.userId}">
+
+                    {if condition="$prize.ballot_num > $user.voteCount"}
+                        {if condition="$user.voteCount!=0"}
+                        {$prize.is_repeat=='1'?"已投".$user.voteCount."票":'已投票'}
+                        {else /}
+                        投TA一票
+                        {/if}
+                    {else /}
+                    {$prize.is_repeat=='1'?"已投".$user.voteCount."票":'已投票'}
+                    {/if}
+
+                </div>
+            </div>
+            {/foreach}
+        </div>
+        {/foreach}
+    </div>
+
+</div>
+
+<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/layer/2.3/layer.js"></script>
+<script type="text/javascript" src="__SURVEY__/toupiao/public/survey/js/zepto.min.js"></script>
+<script type="text/javascript" src="{$ddjs}"></script>
+<script>
+    var _config = {$_config};
+    var isPc = false;
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        isPc = false;
+        dd.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: [
+                'runtime.info',
+                'device.notification.prompt',
+                'biz.chat.pickConversation',
+                'device.notification.confirm',
+                'device.notification.alert',
+                'device.notification.prompt',
+                'biz.chat.open',
+                'biz.util.open',
+                'biz.user.get',
+                'biz.contact.choose',
+                'biz.telephone.call',
+                'biz.ding.post',
+                'device.notification.showPreloader']
+        });
+        dd.userid=0;
+
+        dd.ready(function() {
+//            logger.i('dd.ready rocks!');
+            dd.device.notification.showPreloader({
+                text: "请稍等..", //loading显示的字符，空表示不显示文字
+                showIcon: true, //是否显示icon，默认true。Android无此参数。
+                onSuccess : function(result) {
+                    /*{}*/
+                },
+                onFail : function(err) {}
+            })
+            dd.runtime.info({
+                onSuccess: function(info) {
+                    // logger.i('runtime info: ' + JSON.stringify(info));
+                },
+                onFail: function(err) {
+                    // logger.e('fail: ' + JSON.stringify(err));
+                }
+            });
+            dd.biz.user.get({
+                corpId:_config.corpId, // 可选参数，如果不传则使用用户当前企业的corpId。
+                onSuccess: function (info) {
+                    $("#ding").val(info.emplId);
+                    var nick = info.nick;
+                    dd.device.notification.hidePreloader({
+                        onSuccess : function(result) {
+                            /*{}*/
+                        },
+                        onFail : function(err) {}
+                    })
+                },
+                onFail: function (err) {
+                    logger.e('userGet fail: ' + JSON.stringify(err));
+                }
+            });
+        });
+        dd.error(function(err) {
+            logger.e('dd error: ' + JSON.stringify(err));
+        });
+    }else{
+        isPc = true;
+        DingTalkPC.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: ['runtime.permission.requestAuthCode', 'biz.user.get'] // 必填，需要使用的jsapi列表
+        });
+        DingTalkPC.ready(function(res) {
+            DingTalkPC.biz.user.get({
+                onSuccess: function (res) {
+                    $("#ding").val(res.emplId);
+                },
+                onFail: function (err) {
+
+                }
+            });
+        });
+        DingTalkPC.error(function(err) {
+
+        });
+    }
+</script>
+<script>
+    $(function () {
+        $('.btnsucc').click(function(){
+            $('.guize_html').hide();
+            layer.closeAll();
+        });
+        $('.guize_html').hide();
+        $('.Excellent_item-info').click(function(){
+            var i =layer.load();
+            if($(this).hasClass('Excellent_item-info_disabled')){
+                layer.close(i);
+                return false;
+            }
+
+            var year = '{:request()->param("year")}';
+            var yid = '{$info.id}';
+            var id = $(this).attr('data-id');
+            var toUserId = $(this).attr('data-userId');
+            var userId = $('#ding').val();
+            var that=this;
+            if(!userId){
+                layer.open({
+                    title: '获取用户信息失败'
+                    ,content: '请从钉钉打开或刷新后重试',
+                    icon:'5'
+                });
+            }
+//            classUp($(this));
+//            classAllUp(id);
+
+            var url = '{:url("index/prize/ajaxVote")}';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {'userId':userId,'toUserId':toUserId,'id':id,'year':year,'yid':yid},
+                success: function(res){
+                    layer.close(i);
+                    if(res.code == 1){
+                        $('#count').html('已参与'+res.data.voteCount+'人');
+                        $(that).html('已投票');
+                        if(res.data.isBallot == 0){
+                            console.log(0);
+                            classAllUp(id);
+                        }else{
+                            console.log(1);
+                            classUp(that);
+                        }
+                        layer.open({
+                            type: 1,
+                            shadeClose:true,
+                            offset: '180px',
+                            closeBtn:0,
+                            shade: [0.8, '#393D49'],
+                            title: false, //不显示标题
+                            content: $('.guize_html'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                        });
+
+                    }else{
+                        layer.open({
+                            title: '提示'
+                            ,content: res.msg,
+                            icon:'5'
+                        });
+                    }
+                },
+                error:function(a,b,c){
+                    layer.close(i);
+                    console.log('a:'+a);
+                    console.log('b:'+b);
+                    console.log('c:'+c);
+                }
+            });
+        });
+        function classUp(that)
+        {
+            $(that).removeClass('Excellent_item-info');
+            $(that).addClass('Excellent_item-info_disabled');
+        }
+        function classAllUp(id)
+        {
+            $('#prize_'+id).find('.Excellent_pople_Li').each(function(){
+                $(this).find('.Excellent_item-info').addClass('Excellent_item-info_disabled').removeClass('Excellent_item-info');
+
+            });
+        }
+        setTimeout(function () {
+            var user_ding = $('#ding').val();
+            if(!user_ding){
+                if(!isPc) {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: '请从钉钉打开或刷新后重试',
+                        icon:'5'
+                    });
+                } else {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: 'PC用户请从钉钉工作台打开微应用或刷新后重试',
+                        icon:'5'
+                    });
+                }
+            }
+        }, 5000);
+    });
+</script>
+</body>
+<div class="guize_html">
+    <div class="guize_img">
+        <img src="__SURVEY__/toupiao/public/survey/img/guize_img1.png" alt="">
+    </div>
+    <div class="guize_teile">
+        <p>投票成功</p>
+        <!--<p>谢谢参与！</p>-->
+    </div>
+    <div class="btnsucc">
+        确定
+    </div>
+</div>
+</html>

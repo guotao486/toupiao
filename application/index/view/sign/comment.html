@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>主讲人评价</title>
+    <link rel="stylesheet" href="__SURVEY__/toupiao/public/sign/css/index.css">
+    <script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/layer/2.3/layer.js"></script>
+    <script type="text/javascript" src="__SURVEY__/toupiao/public/survey/js/zepto.min.js"></script>
+    <script type="text/javascript" src="{$ddjs}"></script>
+</head>
+<body>
+
+<div class="Sign_Commennt">
+    <input type="hidden" name="dUserId" id="dUserId" value="19071262561178731">
+    {foreach name='lecture' item='user'}
+    <div class="Sign_Commennt_pop" id="pop_{$key}">
+        <div class="public-comment-show clearfix">
+            <div class="pcs-left">
+                <p>{$user.name}</p>
+            </div>
+            <div class="pcs-right">
+                <div class="pcs-right_pop">
+                    <p>主讲人：<span>{$user.name}</span></p>
+                    <p>主题：<span>{$title}</span></p>
+                    <p>部门：<span>{$user.department}</span></p>
+                    <p>附件：<a href="{:url('index/sign/fileList',['id'=>$Request.param.id])}"><span class="pcs-right_ppt">查看附件</span></a></p>
+                    <p class="photo" id="photo_{$user.userId}"  onmouseover="rate(this,event,'{$user.userId}')"  style={$user.isComment==true?"display:none":""}>评分：
+                        <input type="hidden" name="score" id="score_{$key}" value="0">
+                        <img src="__SURVEY__/toupiao/public/sign/img/star.png" alt="">
+                        <img src="__SURVEY__/toupiao/public/sign/img/star.png" alt="">
+                        <img src="__SURVEY__/toupiao/public/sign/img/star.png" alt="">
+                        <img src="__SURVEY__/toupiao/public/sign/img/star.png" alt="">
+                        <img src="__SURVEY__/toupiao/public/sign/img/star.png" alt="">
+                    </p>
+                    <div class="pcs-right_text">
+                        <p class="Sign_Commennt_hiddle" onclick="commentShow('{$key}')">查看相关评价</p>
+                        <div class="hiddle " id="hiddle_{$key}">
+                            {foreach name='user.comment' item='comment'}
+                            <div class="insufficients">
+                                <div class="public-comment-show clearfix">
+                                    <div class="pcs-right">
+                                        <div class="pcs-right-htop">
+                                            <p>{$comment.userName}<span>{$comment.create_time_text2}</span><span>评分：{$comment.score}</span></p>
+                                        </div>
+                                        <p class="pcs-p">{$comment.content}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {/foreach}
+                        </div>
+                        <div id="from_{$user.userId}" style={$user.isComment==true?'display:none':''}>
+                            <textarea rows="3" name="content" id="content_{$user.userId}"  placeholder="请写下你的评价"></textarea>
+                            <button class="pcs-right_btn" onclick="commentPost('{$user.userId}','{$Request.param.id}')">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {/foreach}
+</div>
+
+</body>
+<script>
+    var _config = {$_config};
+    var isPc = false;
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        isPc = false;
+        dd.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: [
+                'device.notification.prompt',
+                'biz.chat.pickConversation',
+                'device.notification.confirm',
+                'device.notification.alert',
+                'device.notification.prompt',
+                'biz.user.get',
+                'device.notification.showPreloader']
+        });
+        dd.userid=0;
+
+        dd.ready(function() {
+//            logger.i('dd.ready rocks!');
+            dd.device.notification.showPreloader({
+                text: "请稍等..", //loading显示的字符，空表示不显示文字
+                showIcon: true, //是否显示icon，默认true。Android无此参数。
+                onSuccess : function(result) {
+                    /*{}*/
+                },
+                onFail : function(err) {}
+            });
+            dd.biz.user.get({
+                corpId:_config.corpId, // 可选参数，如果不传则使用用户当前企业的corpId。
+                onSuccess: function (info) {
+                    dd.userid = info.emplId;
+                    $('#dUserId').val(info.emplId);
+                    dd.device.notification.hidePreloader({
+                        onSuccess : function(result) {
+                            /*{}*/
+                        },
+                        onFail : function(err) {}
+                    })
+//                        dd.device.notification.alert({
+//                            message: info,
+//                            title: "签到成功",//可传空
+//                            buttonName: "确定",
+//                            onSuccess : function() {
+//                                //onSuccess将在点击button之后回调
+//                                /*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+                },
+                onFail: function (err) {
+                    logger.e('userGet fail: ' + JSON.stringify(err));
+                }
+            });
+
+        });
+
+        dd.error(function(err) {
+            logger.e('dd error: ' + JSON.stringify(err));
+        });
+    }else{
+        isPc = true;
+        DingTalkPC.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: ['runtime.permission.requestAuthCode', 'biz.user.get'] // 必填，需要使用的jsapi列表
+        });
+        DingTalkPC.ready(function(res1) {
+            DingTalkPC.biz.user.get({
+                onSuccess: function (res) {
+                    dd.userid = res.id;
+                    $('#dUserId').val(res.id);
+//                        DingTalkPC.device.notification.alert({
+//                            message: JSON.stringify(res),
+//                            title: "提示",//可传空
+//                            buttonName: "收到",
+//                            onSuccess : function() {
+//								/*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+
+                },
+                onFail: function (err) {
+
+                }
+            });
+        });
+        DingTalkPC.error(function(err) {
+
+        });
+    }
+
+    $(function () {
+//        setTimeout(function () {
+//            var user_ding = dd.userid;
+//
+//            if(!user_ding){
+//                if(!isPc) {
+//                    layer.open({
+//                        title: '获取用户信息失败'
+//                        ,content: '请从钉钉打开或刷新后重试',
+//                        icon:'5'
+//                    });
+//                } else {
+//                    layer.open({
+//                        title: '获取用户信息失败'
+//                        ,content: 'PC用户请从钉钉工作台打开微应用或刷新后重试',
+//                        icon:'5'
+//                    });
+//                }
+//            }
+//
+//        }, 5000);
+    });
+</script>
+<script>
+
+    function commentShow(id){
+        console.log($("#hiddle_"+id));
+        $("#hiddle_"+id).slideToggle("slow");
+    }
+
+    function rate(obj,oEvent,id){
+        var imgSrc = '__SURVEY__/toupiao/public/sign/img/star.png';
+        var imgSrc_2 = '__SURVEY__/toupiao/public/sign/img/star1.png';
+        if(obj.rateFlag) return;
+        var e = oEvent || window.event;
+        var target = e.target || e.srcElement;
+        var imgArray = obj.getElementsByTagName("img");
+        for(var i=0;i<imgArray.length;i++){
+            imgArray[i]._num = i;
+            imgArray[i].onclick=function(){
+                if(obj.rateFlag)
+                    return;
+                obj.rateFlag=true;
+                $('#score_'+id).val(this._num+1);
+            };
+        }
+        if(target.tagName=="IMG"){
+            for(var j=0;j<imgArray.length;j++){
+                if(j<=target._num){
+                    imgArray[j].src=imgSrc_2;
+                }else{
+                    imgArray[j].src=imgSrc;
+                }
+            }
+        }else{
+            for(var k=0;k<imgArray.length;k++){
+                imgArray[k].src=imgSrc;
+            }
+        }
+    }
+
+    function commentPost(userId,id)
+    {
+        var score = $('#pop_'+userId).find('#score_'+userId).val();
+        var content = $('#pop_'+userId).find('#content_'+userId).val();
+
+        if(!content){
+            layer.msg('尚未评价！',{icon:5});
+            return;
+        }
+        if(!id){
+            layer.msg('缺少参数id',{icon:5});
+            return;
+        }
+        var ddid = $('#dUserId').val();
+        if(!ddid){
+            layer.msg('缺少钉钉用户id',{icon:5});
+            return;
+        }
+        if(!userId){
+            layer.msg('缺少被评价用户id',{icon:5});
+            return;
+        }
+        $.ajax({
+            type: 'POST',
+            url: "{:url('index/sign/commentAjax')}",
+            data: {'id':id,'toUserId':userId,'userId':ddid,'content':content,'score':score},
+            timeout:5000,
+            success: function(res)
+            {
+                console.log(res.data);
+                if(res.code == 1){
+                    layer.msg(res.msg,{icon:6});
+                    $('#from_'+userId).hide();
+                    $('#photo_'+userId).hide();
+                    var html = '<div class="insufficients">';
+                        html +='<div class="public-comment-show clearfix">';
+                        html +='<div class="pcs-right">';
+                        html +='<div class="pcs-right-htop">';
+                        html +='<p>'+res.data.userName+'<span>'+res.data.create_time_text2+'</span><span>评分：'+res.data.score+'</span></p>';
+                        html +='</div>';
+                        html +='<p class="pcs-p">'+res.data.content+'</p>';
+                        html +='</div> </div> </div>';
+                        $("#hiddle_"+userId).append(html);
+                }else{
+                    layer.msg(res.msg,{icon:5});
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                console.log(XMLHttpRequest);
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+        });
+    }
+</script>
+
+</html>

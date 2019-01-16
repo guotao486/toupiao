@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>西厢房满意度调研</title>
+    <link href="__SURVEY__/toupiao/public/survey/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="banners">
+        <img src="http://www.xxiangfang.com/tpl/default/xxfimg/1s.jpg" alt="">
+    </div>
+    <input type="hidden" name="ding" id="ding" value="">
+
+    {foreach name='list' item='v'}
+    <div class="content patops survey" data-url='{:url("index/survey/survey",["id"=>$v["id"]])}' data-id="{$v['id']}" data-status="{$v.status}" >
+        <div class="titles">
+            <div class="jx">
+                <span>主题</span>
+                <span class="tph">{$v.title}</span>
+            </div>
+            {switch name="v.status"}
+            {case value="0"}
+            <p class="titlep">已关闭</p>
+            {/case}
+            {case value="1"}
+            <p class="titlep">未开始</p>
+            {/case}
+            {case value="2"}
+            <p class="titlephover">正在进行</p>
+            {/case}
+            {case value="3"}
+            <p class="titlep">已结束</p>
+            {/case}
+            {/switch}
+            <div class="descript">
+                <img src="__SURVEY__/toupiao/public/survey/img/tp.png">
+                <span>{$v.result_num} 人已参与</span>
+            </div>
+            <div class="online"></div>
+            <div class="descriptions">
+                <span>西厢</span><b>西厢房乡建联合机构</b>
+                <span>{$v.end_time|date='Y-m-d',###}   截止</span>
+            </div>
+        </div>
+    </div>
+    {/foreach}
+
+    {empty name="list"}
+    {notempty  name="list2"}
+    {foreach name='list2' item='v'}
+    <div class="content patops prize" data-url='{:url("index/prize/index",["id"=>$v["id"],"year"=>$v["year"]])}' data-id="{$v['id']}" data-status="{$v.status}" >
+        <div class="titles">
+            <div class="jx">
+                <span>主题</span>
+                <span class="tph">{$v.title}</span>
+            </div>
+            {switch name="v.status"}
+            {case value="0"}
+            <p class="titlep">已关闭</p>
+            {/case}
+            {case value="1"}
+            <p class="titlep">未开始</p>
+            {/case}
+            {case value="2"}
+            <p class="titlephover">正在进行</p>
+            {/case}
+            {case value="3"}
+            <p class="titlep">已结束</p>
+            {/case}
+            {/switch}
+            <div class="descript">
+                <img src="__SURVEY__/toupiao/public/survey/img/tp.png">
+                <span>{$v.result_num} 人已参与</span>
+            </div>
+            <div class="online"></div>
+            <div class="descriptions">
+                <span>西厢</span><b>西厢房乡建联合机构</b>
+                <span>{$v.end_time|date='Y-m-d',###}   截止</span>
+            </div>
+        </div>
+    </div>
+    {/foreach}
+    {/notempty}
+    {/empty}
+</body>
+<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/layer/2.3/layer.js"></script>
+<script type="text/javascript" src="{$ddjs}"></script>
+<script>
+    var _config = {$_config};
+    var isPc = false;
+    if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        isPc = false;
+        dd.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: [
+                'runtime.info',
+                'device.notification.prompt',
+                'biz.chat.pickConversation',
+                'device.notification.confirm',
+                'device.notification.alert',
+                'device.notification.prompt',
+                'biz.chat.open',
+                'biz.util.open',
+                'biz.user.get',
+                'biz.contact.choose',
+                'biz.telephone.call',
+                'biz.ding.post',
+                'device.notification.showPreloader']
+        });
+        dd.userid=0;
+
+        dd.ready(function() {
+//            logger.i('dd.ready rocks!');
+
+            dd.biz.user.get({
+                corpId:_config.corpId, // 可选参数，如果不传则使用用户当前企业的corpId。
+                onSuccess: function (info) {
+                    $("#ding").val(info.emplId);
+                    dd.device.notification.hidePreloader({
+                        onSuccess : function(result) {
+                            /*{}*/
+                        },
+                        onFail : function(err) {}
+                    })
+                },
+                onFail: function (err) {
+                    logger.e('userGet fail: ' + JSON.stringify(err));
+                }
+            });
+        });
+        dd.error(function(err) {
+            logger.e('dd error: ' + JSON.stringify(err));
+        });
+    }else{
+        isPc = true;
+        DingTalkPC.config({
+            agentId: _config.agentId,
+            corpId: _config.corpId,
+            timeStamp: _config.timeStamp,
+            nonceStr: _config.nonceStr,
+            signature: _config.signature,
+            jsApiList: ['runtime.permission.requestAuthCode', 'biz.user.get'] // 必填，需要使用的jsapi列表
+        });
+        DingTalkPC.ready(function(res) {
+            DingTalkPC.biz.user.get({
+                onSuccess: function (res) {
+                    $("#ding").val(res.emplId);
+//                        DingTalkPC.device.notification.alert({
+//                            message: JSON.stringify(res),
+//                            title: "提示",//可传空
+//                            buttonName: "收到",
+//                            onSuccess : function() {
+//								/*回调*/
+//                            },
+//                            onFail : function(err) {}
+//                        });
+
+                },
+                onFail: function (err) {
+
+                }
+            });
+        });
+        DingTalkPC.error(function(err) {
+
+        });
+    }
+
+</script>
+<script>
+    $(function () {
+        $('.survey').click(function(){
+            var userId = $('#ding').val();
+            var url = $(this).attr('data-url');
+            var status = $(this).attr('data-status');
+            var id = $(this).attr('data-id');
+            switch(status){
+                case '0':
+                    layer.alert('该问卷已关闭' , {icon: 5});
+                    break;
+                case '1':
+                    layer.alert('该问卷未开始' , {icon: 5});
+                    break;
+                case '2':
+
+                    var ii = layer.load();
+                    $.ajax({
+                        type: "POST",
+                        url: "{:url('index/survey/checkSurvey')}",
+                        data: {'userId':userId,'id':id},
+                        success: function(res){
+                            if(res.code == 1){
+                                window.location.href = url;
+                            }else{
+                                layer.alert(res.msg , {icon: 5});
+                            }
+                            layer.close(ii);
+                        }
+                    });
+                    break;
+                case '3':
+                    layer.alert('该问卷已结束' , {icon: 5});
+                    break;
+            }
+        });
+        $('.prize').click(function(){
+            var userId = $('#ding').val();
+            var url = $(this).attr('data-url');
+            var status = $(this).attr('data-status');
+            switch(status){
+                case '0':
+                    layer.alert('该问卷已关闭' , {icon: 5});
+                    break;
+                case '1':
+                    layer.alert('该问卷未开始' , {icon: 5});
+                    break;
+                case '2':
+                    if(userId){
+                        window.location.href = url+'?userId='+userId;
+                    }
+                    break;
+                case '3':
+                    layer.alert('该问卷已结束' , {icon: 5});
+                    break;
+            }
+        });
+        var index= layer.load();
+        setTimeout(function () {
+            layer.close(index);
+            var user_ding = $('#ding').val();
+            if(!user_ding){
+                if(!isPc) {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: '请从钉钉打开或刷新后重试',
+                        icon:'5'
+                    });
+                } else {
+                    layer.open({
+                        title: '获取用户信息失败'
+                        ,content: 'PC用户请从钉钉工作台打开微应用或刷新后重试',
+                        icon:'5'
+                    });
+                }
+            }
+        }, 5000);
+    });
+</script>
+
+</html>
